@@ -152,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String[] weatherData) {
             // COMPLETED (19) As soon as the data is finished loading, hide the loading indicator
             mLoadingIndicator.setVisibility(View.INVISIBLE);
+            
             if (weatherData != null) {
                 // COMPLETED (11) If the weather data was not null, make sure the data view is visible
                 showWeatherDataView();
