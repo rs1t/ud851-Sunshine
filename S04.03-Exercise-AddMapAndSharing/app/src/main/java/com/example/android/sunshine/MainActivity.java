@@ -20,6 +20,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.ShareCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -154,6 +155,16 @@ public class MainActivity extends AppCompatActivity implements ForecastAdapterOn
         /* Then, show the error */
         mErrorMessageDisplay.setVisibility(View.VISIBLE);
     }
+    
+    public void openMap() {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        String geoLocation = "1600 Amphitheatre Parkway, CA";
+        Uri uri = Uri.parse("geo:0,0?q=" + geoLocation);
+        intent.setData(uri);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+    }
 
     public class FetchWeatherTask extends AsyncTask<String, Void, String[]> {
 
@@ -221,8 +232,10 @@ public class MainActivity extends AppCompatActivity implements ForecastAdapterOn
             return true;
         }
 
-        // TODO (2) Launch the map when the map menu item is clicked
-
+        // DONE (2) Launch the map when the map menu item is clicked
+        if (id == R.id.action_open_map) {
+            openMap();
+        }
         return super.onOptionsItemSelected(item);
     }
 }
