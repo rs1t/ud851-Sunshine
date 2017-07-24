@@ -40,16 +40,16 @@ public class WeatherDbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         
-        final String SQL_CREATE_WEATHER_TABLE = "CREATE TABLE " + WeatherContract.WeatherEntry.TABLE_NAME + "(" +
-                WeatherContract.WeatherEntry._ID + " INTEGER AUTOINCREMENT, " +
+        final String SQL_CREATE_WEATHER_TABLE = "CREATE TABLE " + WeatherContract.WeatherEntry.TABLE_NAME + " (" +
+                WeatherContract.WeatherEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 WeatherContract.WeatherEntry.COLUMN_DATE + " INTEGER, " +
                 WeatherContract.WeatherEntry.COLUMN_WEATHER_ID + " INTEGER, " +
-                WeatherContract.WeatherEntry.COLUMN_MAX_TEMP + " REAL, " +
                 WeatherContract.WeatherEntry.COLUMN_MIN_TEMP + " REAL, " +
-                WeatherContract.WeatherEntry.COLUMN_DEGREES + " REAL, " +
+                WeatherContract.WeatherEntry.COLUMN_MAX_TEMP + " REAL, " +
                 WeatherContract.WeatherEntry.COLUMN_HUMIDITY + " REAL, " +
                 WeatherContract.WeatherEntry.COLUMN_PRESSURE + " REAL, " +
-                WeatherContract.WeatherEntry.COLUMN_WIND_SPEED + "REAL" + ");";
+                WeatherContract.WeatherEntry.COLUMN_WIND_SPEED + " REAL, " +
+                WeatherContract.WeatherEntry.COLUMN_DEGREES + " REAL" + ");";
         
         db.execSQL(SQL_CREATE_WEATHER_TABLE);
     }
